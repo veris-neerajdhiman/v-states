@@ -25,6 +25,7 @@ from django.contrib import admin
 from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 
+from state_machine import router as states_router
 
 API_TITLE = '{project_name} API'
 
@@ -34,6 +35,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^docs/', include_docs_urls(title=API_TITLE, description='')),
+
+    url(r'^micro-service/state/', include(states_router)),
 
 ]
 
